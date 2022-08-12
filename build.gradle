@@ -10,8 +10,20 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation fileTree(dir: 'lib', include: ['*.jar'])
+
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.32'
+    implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.2.9'
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.9'
+
+    implementation group: 'org.jline', name: 'jline', version: '3.21.0'
+    implementation group: 'org.jline', name: 'jline-terminal-jna', version: '3.21.0'
+    implementation group: 'net.java.dev.jna', name: 'jna', version: '5.10.0'
+
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.9.0'
+    implementation 'org.jetbrains:annotations:20.1.0'
+
+    implementation group: 'dev.morphia.morphia', name: 'morphia-core', version: '2.2.7'
 }
 
 test {
