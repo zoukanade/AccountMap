@@ -1,6 +1,9 @@
 package zou.AccountMap.users;
 import dev.morphia.annotations.*;
 import zou.AccountMap.AccountMap;
+import zou.AccountMap.database.DatabaseHelper;
+import zou.AccountMap.utils.Crypto;
+import zou.AccountMap.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -121,5 +124,16 @@ public class Account {
         }
 
         return permissions.contains("*");
+    }
+
+    // TODO make unique
+    public String generateLoginToken() {
+        this.token = Utils.bytesToHex(Crypto.createSessionKey(32));
+        this.save();
+        return this.token;
+    }
+
+    public void save() {
+        DatabaseHelper.saveAccount(this);
     }
 }

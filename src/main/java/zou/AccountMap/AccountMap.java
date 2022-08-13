@@ -13,6 +13,9 @@ import zou.AccountMap.command.PermissionHandler;
 import zou.AccountMap.database.DatabaseHelper;
 import zou.AccountMap.database.DatabaseManager;
 import zou.AccountMap.server.http.HttpServer;
+import zou.AccountMap.server.http.handlers.GenericHandler;
+import zou.AccountMap.server.http.handlers.LoginHandler;
+import zou.AccountMap.server.http.handlers.User;
 import zou.AccountMap.users.Account;
 import zou.AccountMap.utils.ConfigContainer;
 import org.jetbrains.annotations.Nullable;
@@ -53,12 +56,11 @@ public class AccountMap {
 
           httpServer.addRouter(HttpServer.UnhandledRequestRouter.class);
           httpServer.addRouter(HttpServer.DefaultRequestRouter.class);
+          httpServer.addRouter(GenericHandler.class);
+          httpServer.addRouter(LoginHandler.class);
+          httpServer.addRouter(User.class);
           httpServer.start();
 
-          //Account account = DatabaseHelper.getAccountByUserName("zou");
-          //commandMap.invoke(null, null, "test");
-
-          // Open console.
           startConsole();
      }
      
@@ -89,6 +91,10 @@ public class AccountMap {
           } catch (Exception e) {
                AccountMap.getLogger().error("Unable to save config file.", e);
           }
+     }
+
+     public static Gson getGsonFactory() {
+          return gson;
      }
      public static Logger getLogger(){return log;}
      public static LineReader getConsole() {

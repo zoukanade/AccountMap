@@ -30,6 +30,7 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/java-express.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/kcp.jar" path-in-jar="/" />
       <element id="dir-copy" path="$PROJECT_DIR$/src/main/resources" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../caches/modules-2/files-2.1/com.google.protobuf/protobuf-java/3.18.2/17e444501d7ed8dd1f6348f5bc0ad627200defa8/protobuf-java-3.18.2.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

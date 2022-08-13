@@ -9,21 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdbdb451-cfe4-409e-9223-e886f254676c" name="变更" comment="base">
-      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/command/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/command/CommandHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/command/CommandMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/command/DefaultPermissionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/command/PermissionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/command/commands/test.java" afterDir="false" />
+    <list default="true" id="cdbdb451-cfe4-409e-9223-e886f254676c" name="变更" comment="Add Command">
+      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/server/http/handlers/GenericHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/server/http/handlers/LoginHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/server/http/handlers/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/server/http/objects/JsonResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/utils/Crypto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/utils/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/AccountMap_main_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/AccountMap_main_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/zou/AccountMap/AccountMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/AccountMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/zou/AccountMap/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/Configuration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/zou/AccountMap/database/DatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/database/DatabaseHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/zou/AccountMap/users/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/users/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/zou/AccountMap/utils/ConfigContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/utils/ConfigContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +81,9 @@
       <recent name="C:\Users\27973\AccountMap\src\main\java\zou\AccountMap" />
       <recent name="C:\Users\27973\AccountMap\src\main\resources" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="zou.AccountMap.utils" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="AccountMap" type="JarApplication">
@@ -105,7 +106,7 @@
       <workItem from="1660321135675" duration="1381000" />
       <workItem from="1660322934436" duration="435000" />
       <workItem from="1660323402312" duration="1635000" />
-      <workItem from="1660366401530" duration="16373000" />
+      <workItem from="1660366401530" duration="26728000" />
     </task>
     <task id="LOCAL-00001" summary="create">
       <created>1660321246159</created>
@@ -121,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660325014117</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add Command">
+      <created>1660389510421</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1660389510421</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,6 +149,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="create" />
     <MESSAGE value="base" />
-    <option name="LAST_COMMIT_MESSAGE" value="base" />
+    <MESSAGE value="Add Command" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Command" />
   </component>
 </project>

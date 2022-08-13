@@ -33,6 +33,14 @@ public final class DatabaseHelper {
     public static Account getAccountById(String uid) {
         return DatabaseManager.getDatastore().find(Account.class).filter(Filters.eq("_id", uid)).first();
     }
+    public static Account getAccountBySessionKey(String sessionKey) {
+        if(sessionKey == null) return null;
+        return DatabaseManager.getDatastore().find(Account.class).filter(Filters.eq("sessionKey", sessionKey)).first();
+    }
+    public static Account getAccountByToken(String token) {
+        if(token == null) return null;
+        return DatabaseManager.getDatastore().find(Account.class).filter(Filters.eq("token", token)).first();
+    }
 
     public static Application createApplication(String appName, String notes){
         Application exists = getApplicationByAppName(appName);
