@@ -1,29 +1,30 @@
 package zou.AccountMap;
 
+import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.jline.reader.EndOfFileException;
+import org.jline.reader.UserInterruptException;
+import org.reflections8.Reflections;
+import zou.AccountMap.command.CommandMap;
+import zou.AccountMap.command.DefaultPermissionHandler;
+import zou.AccountMap.command.PermissionHandler;
+import zou.AccountMap.database.DatabaseHelper;
 import zou.AccountMap.database.DatabaseManager;
-import zou.AccountMap.map.AppAccount;
-import zou.AccountMap.map.Application;
 import zou.AccountMap.server.http.HttpServer;
 import zou.AccountMap.users.Account;
 import zou.AccountMap.utils.ConfigContainer;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.LoggerFactory;
-import org.jline.reader.EndOfFileException;
 import org.jline.reader.LineReader;
 import org.jline.reader.LineReaderBuilder;
-import org.jline.reader.UserInterruptException;
 import org.jline.terminal.Terminal;
 import org.jline.terminal.TerminalBuilder;
-import zou.AccountMap.database.DatabaseHelper;
 
-import javax.xml.crypto.Data;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+
+import static zou.AccountMap.Configuration.SERVER;
 
 
 public class AccountMap {
@@ -31,13 +32,22 @@ public class AccountMap {
      private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
      private static LineReader consoleLineReader = null;
      private static final File configFile = new File("./config.json");
+     public static final Reflections reflector = new Reflections("zou.AccountMap");
+     private static final CommandMap commandMap;
+     private static PermissionHandler permissionHandler;
      public static ConfigContainer config;
      static{
           AccountMap.loadConfig();
+
+          var mongoLogger = (Logger) LoggerFactory.getLogger("org.mongodb.driver");
+          mongoLogger.setLevel(Level.OFF);
+
+          commandMap = new CommandMap();
      }
      public static void main(String[] args){
-
           DatabaseManager.initialize();
+
+          permissionHandler = new DefaultPermissionHandler();
 
           HttpServer httpServer = new HttpServer();
 
@@ -45,6 +55,11 @@ public class AccountMap {
           httpServer.addRouter(HttpServer.DefaultRequestRouter.class);
           httpServer.start();
 
+          //Account account = DatabaseHelper.getAccountByUserName("zou");
+          //commandMap.invoke(null, null, "test");
+
+          // Open console.
+          startConsole();
      }
      
      public static void loadConfig() {
@@ -95,7 +110,43 @@ public class AccountMap {
           }
           return consoleLineReader;
      }
+     public static CommandMap getCommandMap(){
+          return commandMap;
+     }
+     public static PermissionHandler getPermissionHandler() {
+          return permissionHandler;
+     }
+     public static void startConsole() {
+          getLogger().info("messages.status.done");
+          String input = null;
+          boolean isLastInterrupted = false;
+          while (true) {
+               try {
+                    input = consoleLineReader.readLine("> ");
+               } catch (UserInterruptException e) {
+                    if (!isLastInterrupted) {
+                         isLastInterrupted = true;
+                         AccountMap.getLogger().info("Press Ctrl-C again to shutdown.");
+                         continue;
+                    } else {
+                         Runtime.getRuntime().exit(0);
+                    }
+               } catch (EndOfFileException e) {
+                    AccountMap.getLogger().info("EOF detected.");
+                    continue;
+               } catch (IOError e) {
+                    AccountMap.getLogger().error("An IO error occurred.", e);
+                    continue;
+               }
 
+               isLastInterrupted = false;
+               try {
+                    CommandMap.getInstance().invoke(null, null, input);
+               } catch (Exception e) {
+                    AccountMap.getLogger().error("messages.game.command_error", e);
+               }
+          }
+     }
      public enum ServerDebugMode {
           ALL, MISSING, WHITELIST, BLACKLIST, NONE
      }

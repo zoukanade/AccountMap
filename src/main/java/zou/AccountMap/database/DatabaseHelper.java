@@ -11,7 +11,7 @@ import javax.xml.crypto.Data;
 public final class DatabaseHelper {
     public static Account createAccount(String username, String password) {
         // Unique names only
-        Account exists = DatabaseHelper.getAccountByName(username);
+        Account exists = DatabaseHelper.getAccountByUserName(username);
         if (exists != null) {
             return null;
         }
@@ -27,8 +27,11 @@ public final class DatabaseHelper {
     public static void saveAccount(Account account) {
         DatabaseManager.getDatastore().save(account);
     }
-    public static Account getAccountByName(String username) {
+    public static Account getAccountByUserName(String username) {
         return DatabaseManager.getDatastore().find(Account.class).filter(Filters.eq("username", username)).first();
+    }
+    public static Account getAccountById(String uid) {
+        return DatabaseManager.getDatastore().find(Account.class).filter(Filters.eq("_id", uid)).first();
     }
 
     public static Application createApplication(String appName, String notes){

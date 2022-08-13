@@ -1,10 +1,12 @@
 package zou.AccountMap.utils;
 
 import zou.AccountMap.AccountMap.ServerDebugMode;
+
 public class ConfigContainer {
 
     public Database databaseInfo = new Database();
     public Server server = new Server();
+    public Account account = new Account();
 
     public static class Database{
         public DataStore database = new DataStore();
@@ -13,6 +15,7 @@ public class ConfigContainer {
             public String collection = "AccountMap";
         }
     }
+
     public static class Server{
         public ServerDebugMode debugLevel = ServerDebugMode.NONE;
         public HTTP http = new HTTP();
@@ -45,4 +48,12 @@ public class ConfigContainer {
         public String indexFile = "./index.html";
         public String errorFile = "./404.html";
     }
+
+    public static class Account{
+        public boolean autoCreate = true;
+        public String[] defaultPermissions = {};
+        public int maxPlayer = -1;
+    }
+
+
 }

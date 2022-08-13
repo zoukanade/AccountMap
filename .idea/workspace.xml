@@ -9,34 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdbdb451-cfe4-409e-9223-e886f254676c" name="变更" comment="create">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/AccountMap_main_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keystore.p12" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/bcrypt-0.8.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/bytes-1.3.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fastutil-mini-8.5.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/java-express.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/kcp.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/AccountMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/Configuration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/database/DatabaseCounter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/database/DatabaseHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/database/DatabaseManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/map/AppAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/map/Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/server/http/HttpServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/server/http/Router.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/users/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/utils/ConfigContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/utils/FileUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/utils/JlineLogbackAppender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="cdbdb451-cfe4-409e-9223-e886f254676c" name="变更" comment="base">
+      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/command/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/command/CommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/command/CommandMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/command/DefaultPermissionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/command/PermissionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/command/commands/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/AccountMap_main_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/AccountMap_main_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/zou/AccountMap/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/zou/AccountMap/AccountMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/AccountMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/zou/AccountMap/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/zou/AccountMap/database/DatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/database/DatabaseHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/zou/AccountMap/users/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/users/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/zou/AccountMap/utils/ConfigContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/zou/AccountMap/utils/ConfigContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +34,15 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -68,7 +64,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/27973/AccountMap/AccountMap.jar",
+    "last_opened_file_path": "C:/Users/27973/AccountMap/src/main/java/zou/AccountMap/command",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -80,6 +76,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\27973\AccountMap\src\main\java\zou\AccountMap\command" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\27973\AccountMap\src\main\java\zou\AccountMap" />
       <recent name="C:\Users\27973\AccountMap\src\main\resources" />
@@ -105,7 +104,8 @@
       <updated>1660321133598</updated>
       <workItem from="1660321135675" duration="1381000" />
       <workItem from="1660322934436" duration="435000" />
-      <workItem from="1660323402312" duration="1501000" />
+      <workItem from="1660323402312" duration="1635000" />
+      <workItem from="1660366401530" duration="16373000" />
     </task>
     <task id="LOCAL-00001" summary="create">
       <created>1660321246159</created>
@@ -114,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660321246159</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="base">
+      <created>1660325014117</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1660325014117</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,6 +140,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="create" />
-    <option name="LAST_COMMIT_MESSAGE" value="create" />
+    <MESSAGE value="base" />
+    <option name="LAST_COMMIT_MESSAGE" value="base" />
   </component>
 </project>
