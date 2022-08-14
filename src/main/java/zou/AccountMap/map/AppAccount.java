@@ -14,6 +14,7 @@ import java.util.List;
 public class AppAccount {
     @Id
     private ObjectId id;
+    private String strId;
     @Indexed
     private String ownerId;
     private String appId;
@@ -22,16 +23,22 @@ public class AppAccount {
     private String password;
 
 
-    private List<ObjectId> bindAppAccount;
+    private final List<String> bindAppAccountIds;
 
     public AppAccount(){
-        bindAppAccount = new ArrayList<>();
+        bindAppAccountIds = new ArrayList<>();
     }
 
     public ObjectId getId() {
         return this.id;
     }
 
+    public String getStrId(){
+        return strId;
+    }
+    public void setStrId(String strId){
+        this.strId = strId;
+    }
     public String getOwnerId() {
         return ownerId;
     }
@@ -68,26 +75,27 @@ public class AppAccount {
         this.password = password;
     }
 
-    public List<ObjectId> getBindAppAccount(){
-        return bindAppAccount;
+    public List<String> getBindAppAccountIds(){
+        return bindAppAccountIds;
     }
     public boolean addBindAppAccount(AppAccount appAccount){
         AppAccount exists = DatabaseHelper.getAppAccountById(appAccount.getId());
         if (exists == null) {
             return false;
         }
-        bindAppAccount.add(appAccount.getId());
+        bindAppAccountIds.add(appAccount.getStrId());
         return true;
     }
     public boolean delBindAppAccount(AppAccount appAccount){
-        return bindAppAccount.remove(appAccount.getId());
+        return bindAppAccountIds.remove(appAccount.getStrId());
     }
 
 
-
-    public static boolean createAppAccount(Account ownerAccount, Application ownerApp, String account, String password)
-    {
-        return DatabaseHelper.createAppAccount(ownerAccount, ownerApp, account, password) != null;
+    public static AppAccount createAppAccount(Account ownerAccount, Application ownerApp, String account, String password) {
+        return DatabaseHelper.createAppAccount(ownerAccount, ownerApp, account, password);
+    }
+    public void save(){
+        DatabaseHelper.saveAppAccount(this);
     }
 
 

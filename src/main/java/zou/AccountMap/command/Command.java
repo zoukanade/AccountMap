@@ -14,6 +14,6 @@ public @interface Command {
     String[] aliases() default {};
 
     String permission() default "";
-    //是否创建一个新的线程来运行
+    //
     boolean threading() default false;
 }

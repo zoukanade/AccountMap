@@ -9,10 +9,10 @@ import zou.AccountMap.server.http.Router;
 import zou.AccountMap.server.http.objects.JsonResponse;
 import zou.AccountMap.users.Account;
 
-public final class User implements Router {
+public final class UserHandler implements Router {
     @Override
     public void applyRoutes(Express express, Javalin handle) {
-        express.all("register", User::register);
+        express.all("register", UserHandler::register);
     }
 
     private static void register(Request request, Response response) {

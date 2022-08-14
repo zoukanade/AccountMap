@@ -62,8 +62,10 @@ public class Account {
     public String getSessionKey() {
         return this.sessionKey;
     }
-    public void setSessionKey(String sessionKey) {
-        this.sessionKey = sessionKey;
+    public String generateSessionKey() {
+        this.sessionKey = Utils.bytesToHex(Crypto.createSessionKey(32));
+        this.save();
+        return this.sessionKey;
     }
 
     public List<String> getPermissions() {

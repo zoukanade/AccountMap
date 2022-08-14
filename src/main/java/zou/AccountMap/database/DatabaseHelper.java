@@ -7,6 +7,7 @@ import zou.AccountMap.users.Account;
 import org.bson.types.ObjectId;
 
 import javax.xml.crypto.Data;
+import java.util.List;
 
 public final class DatabaseHelper {
     public static Account createAccount(String username, String password) {
@@ -70,10 +71,16 @@ public final class DatabaseHelper {
         appAccount.setAppId(ownerApp);
         appAccount.setAccount(account);
         appAccount.setPassword(password);
+        DatabaseHelper.saveAppAccount(appAccount);
+        appAccount.setStrId(appAccount.getId().toString());
+        appAccount.save();
         return appAccount;
     }
     public static void saveAppAccount(AppAccount appAccount){
         DatabaseManager.getDatastore().save(appAccount);
+    }
+    public static List<AppAccount> getAllAppAccountByAccount(Account account){
+        return DatabaseManager.getDatastore().find(AppAccount.class).filter(Filters.eq("ownerId", account.getId())).stream().toList();
     }
     public static AppAccount getAppAccountById(ObjectId id){
         return DatabaseManager.getDatastore().find(AppAccount.class).filter(Filters.eq("_id", id)).first();

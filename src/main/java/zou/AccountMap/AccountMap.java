@@ -4,19 +4,19 @@ import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.bson.types.ObjectId;
 import org.jline.reader.EndOfFileException;
 import org.jline.reader.UserInterruptException;
 import org.reflections8.Reflections;
 import zou.AccountMap.command.CommandMap;
 import zou.AccountMap.command.DefaultPermissionHandler;
 import zou.AccountMap.command.PermissionHandler;
-import zou.AccountMap.database.DatabaseHelper;
 import zou.AccountMap.database.DatabaseManager;
 import zou.AccountMap.server.http.HttpServer;
+import zou.AccountMap.server.http.handlers.AccountMapHandler;
 import zou.AccountMap.server.http.handlers.GenericHandler;
 import zou.AccountMap.server.http.handlers.LoginHandler;
-import zou.AccountMap.server.http.handlers.User;
-import zou.AccountMap.users.Account;
+import zou.AccountMap.server.http.handlers.UserHandler;
 import zou.AccountMap.utils.ConfigContainer;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.LoggerFactory;
@@ -26,8 +26,6 @@ import org.jline.terminal.Terminal;
 import org.jline.terminal.TerminalBuilder;
 
 import java.io.*;
-
-import static zou.AccountMap.Configuration.SERVER;
 
 
 public class AccountMap {
@@ -58,7 +56,8 @@ public class AccountMap {
           httpServer.addRouter(HttpServer.DefaultRequestRouter.class);
           httpServer.addRouter(GenericHandler.class);
           httpServer.addRouter(LoginHandler.class);
-          httpServer.addRouter(User.class);
+          httpServer.addRouter(UserHandler.class);
+          httpServer.addRouter(AccountMapHandler.class);
           httpServer.start();
 
           startConsole();

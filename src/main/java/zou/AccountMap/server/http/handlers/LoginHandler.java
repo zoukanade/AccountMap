@@ -12,6 +12,8 @@ import zou.AccountMap.users.Account;
 import javax.servlet.http.Cookie;
 import java.util.Objects;
 
+import static zou.AccountMap.server.http.Helper.isLogin;
+
 public final class LoginHandler implements Router {
     @Override
     public void applyRoutes(Express express, Javalin handle) {
@@ -20,7 +22,7 @@ public final class LoginHandler implements Router {
     }
 
     private static void login(Request request, Response response) {
-        if(isLogin(request.cookie("token"))){
+        if(isLogin(request)){
             JsonResponse res = new JsonResponse(403, "you are already logged in", null);
             response.status(403);
             response.json(res);
@@ -44,7 +46,12 @@ public final class LoginHandler implements Router {
             response.json(res);
             return;
         }
-
+        if(account.getIsBanned()){
+            JsonResponse res = new JsonResponse(403, "account banned", null);
+            response.status(403);
+            response.json(res);
+            return;
+        }
         if(!account.getPassword().equals(password)){
             JsonResponse res = new JsonResponse(403, "username or password error", null);
             response.status(403);
@@ -59,7 +66,7 @@ public final class LoginHandler implements Router {
         response.json(res);
     }
     private static void outLogin(Request request, Response response){
-        if(!isLogin(request.cookie("token"))){
+        if(!isLogin(request)){
             JsonResponse res = new JsonResponse(403, "Not logged in", null);
             response.status(403);
             response.json(res);
@@ -70,13 +77,4 @@ public final class LoginHandler implements Router {
         response.json(res);
     }
 
-    public static boolean isLogin(String token){
-        if(token == null)
-            return false;
-
-        if(DatabaseHelper.getAccountByToken(token) == null)
-            return false;
-
-        return true;
-    }
 }

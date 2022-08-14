@@ -115,7 +115,7 @@ public class CommandMap {
         }
         Command annotation = this.annotations.get(label);
 
-        //检查是否有权限@其他用户
+        //
         if(targetAccount == null){
             if(account != null){
                 if(!account.hasPermission("server.usingUser")){
